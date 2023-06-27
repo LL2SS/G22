@@ -11,29 +11,27 @@
 	$msg=["记录失败","记录成功"];//提示信息
     $id=time();
 
-    $userAns=$_POST["userAns"];
-    $userID=$_SESSION["user_id"];
-    $questionID=$_SESSION["question_id"];
-
-    date_default_timezone_set("PRC");
-    $nowTime=date("Y-m-d h:i:s");
+    $folderPath=$_POST["folderPath"];
+    $Path=$_POST["Path"];
+    $id=$_POST["i"];
     
-    $sql="UPDATE `doquestions` SET `answer`=? ,`update_date`=? WHERE user_id=? and question_id=?";
-    $stmt=mysqli_prepare($conn,$sql);
-    mysqli_stmt_bind_param($stmt,"ssii",$userAns,$nowTime,$userID,$questionID);
-    mysqli_stmt_execute($stmt);
-    if(mysqli_stmt_affected_rows($stmt)>0){
-        $code=1;
-    }else{
-        $sql="INSERT INTO `doquestions`(`id`, `user_id`, `question_id`, `answer`, `build_date`, `update_date`) VALUES ('$id',?,?,?,?,?)";
+    for($i=0;$i<$Path.length;$i++){
+        $sql="INSERT INTO `Path`(`ID`, `Content`, IID) VALUES (?,?,?)";
         $stmt=mysqli_prepare($conn,$sql);
-        mysqli_stmt_bind_param($stmt,"iisss",$userID,$questionID,$userAns,$nowTime,$nowTime);
+        mysqli_stmt_bind_param($stmt,"isi",$id,$Path[i],$i);
         mysqli_stmt_execute($stmt);
         if(mysqli_stmt_affected_rows($stmt)>0){
             $code=1;
         }
     }
-
+    $sql="INSERT INTO `folderPath`(`ID`, `Content`) VALUES (?,?)";
+    $stmt=mysqli_prepare($conn,$sql);
+    mysqli_stmt_bind_param($stmt,"isi",$id,$folderPath);
+    mysqli_stmt_execute($stmt);
+    if(mysqli_stmt_affected_rows($stmt)<=0){
+        $code=0;
+    }
+    $_SESSION["id"]=$id;
     mysqli_close($conn);
     getApiResult($code, $msg[$code],$data);
 ?>

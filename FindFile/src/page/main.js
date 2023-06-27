@@ -7,9 +7,11 @@ $("#folder-input").on("change", function(event) {
         Path = folderPath.split("/");
         console.log(folderPath);
         console.log(Path);
+        console.log(Path[1]);
         $.post("src/server/SavePath.php",{
             "folderPath" : folderPath,
-            "Path" : Path
+            "Path" : Path,
+            "i" : i
         },function(data){
             
         },"json");

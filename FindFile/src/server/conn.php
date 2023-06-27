@@ -4,7 +4,7 @@
 
 $user = 'root';  //数据库服务器访问用户名
 $pwd = 'nqcWbbLAhKURtGAh';   //数据库服务器访问密码
-$db = 'redrescue';     //访问的数据库名
+$db = 'document';     //访问的数据库名
 $host = 'localhost';  //数据库服务器的域名或ip地址
 $port = 3306;     //数据库服务器的访问端口
 
