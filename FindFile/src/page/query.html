@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>测试</title>
+    </head>
+    <body style="text-align: center;">
+        <h1>测试</h1>
+        <button onclick="test()">查找</button>
+        <div class="txt" style="line-height:30px">
+            我是文字
+            我是文字
+            我是文字
+            我是文字
+        </div>
+    </body>
+    <script>
+
+        // 读文件内容
+        function readfile(filepath) {
+        let xhr = new XMLHttpRequest(),
+            okStatus = document.location.protocol === "file:" ? 0 : 200;
+        xhr.open('GET', filepath, false);
+        xhr.overrideMimeType("text/html;charset=utf-8");//默认为utf-8
+        xhr.send(null);
+        return xhr.status === okStatus ? xhr.responseText : null;
+    }
+
+ 
+        function test(){
+            let text = readfile("asset/index/search_index.doc");
+            let keywords = object.value.trim();
+            let allLines = text.split("\n");
+            for (let index in allLines) {
+            
+            }
+        }
+ 
+        
+    </script>
+</html>
+
+
+
