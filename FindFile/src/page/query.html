@@ -6,12 +6,7 @@
     <body style="text-align: center;">
         <h1>测试</h1>
         <button onclick="test()">查找</button>
-        <div class="txt" style="line-height:30px">
-            我是文字
-            我是文字
-            我是文字
-            我是文字
-        </div>
+        <!-- <div class="box"></div> -->
     </body>
     <script>
 
@@ -20,19 +15,37 @@
         let xhr = new XMLHttpRequest(),
             okStatus = document.location.protocol === "file:" ? 0 : 200;
         xhr.open('GET', filepath, false);
-        xhr.overrideMimeType("text/html;charset=utf-8");//默认为utf-8
+        xhr.overrideMimeType("application/msword;charset=utf-8");//默认为utf-8
         xhr.send(null);
         return xhr.status === okStatus ? xhr.responseText : null;
     }
 
  
         function test(){
-            let text = readfile("asset/index/search_index.doc");
-            let keywords = object.value.trim();
-            let allLines = text.split("\n");
-            for (let index in allLines) {
-            
+            //let text = readfile("1.doc");
+            let text="abcde dfggc gfabd judab";
+            //alert(text)
+            let keywords = "f";
+            let allLines = text.split(" ");
+            var p=document.createElement("p");
+            var t=document.createTextNode("-------------------------------");
+            p.appendChild(t);
+            document.body.appendChild(p);
+            for (let line in allLines) {
+                //alert(allLines[line]);
+                if(allLines[line].toLowerCase().indexOf(keywords.toLowerCase())>-1){
+                    //var box=document.getElementsByClassName("box");
+                    //box.innerHTML="<p>"+n.toString+line+"</p>";
+                    p=document.createElement("p");
+                    t=document.createTextNode((parseInt(line)+1)+"      "+allLines[line]);
+                    p.appendChild(t);
+                    document.body.appendChild(p);
+                }
             }
+            // p=document.createElement("p");
+            // t=document.createTextNode("\n\n");
+            // p.appendChild(t);
+            // document.body.appendChild(p);
         }
  
         
