@@ -11,9 +11,9 @@
 	$msg=["记录失败","记录成功"];//提示信息
     $id=time();
 
-    $folderPath=$_POST["folderPath"];
-    $Path=$_POST["Path"];
-    $id=$_POST["i"];
+    $folderPath=$_GET["folderPath"];
+    $Path=$_GET["Path"];
+    $id=$_GET["i"];
     
     for($i=0;$i<$Path.length;$i++){
         $sql="INSERT INTO `Path`(`ID`, `Content`, IID) VALUES (?,?,?)";

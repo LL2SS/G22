@@ -1,6 +1,4 @@
 <?php
-    session_start();
-    include("function.php");
 
     $Path="getFilePath.py";
     $command = "python {$Path}";

@@ -20,3 +20,12 @@ file_paths = get_files(directory)
 json_data = json.dumps(file_paths)
 
 print(json_data)
+try:
+    file = open('./FindFile/src/server/filePath.json', 'w')
+
+    # 写入内容
+    fd=file.write(json_data)
+    print(fd)
+# 关闭文件
+finally:
+    file.close()
